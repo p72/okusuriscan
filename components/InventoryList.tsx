@@ -1,4 +1,3 @@
-
 import React, { useMemo } from 'react';
 import { Prescription } from '../types';
 import { PillIcon, ClockIcon } from './Icons';
@@ -39,7 +38,7 @@ export const InventoryList: React.FC<InventoryListProps> = ({ prescriptions }) =
       <div className="text-center py-10 px-4 bg-white rounded-lg shadow-md">
         <PillIcon className="w-12 h-12 mx-auto text-slate-400" />
         <h3 className="mt-4 text-lg font-semibold text-slate-700">在庫のお薬はありません</h3>
-        <p className="mt-1 text-slate-500">右下のカメラボタンから新しい処方箋をスキャンして始めましょう。</p>
+        <p className="mt-1 text-slate-500">右下のボタンから新しい処方箋を登録しましょう。</p>
       </div>
     );
   }

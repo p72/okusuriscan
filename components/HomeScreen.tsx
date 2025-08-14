@@ -1,15 +1,15 @@
-
 import React from 'react';
 import { Prescription } from '../types';
 import { InventoryList } from './InventoryList';
-import { CameraIcon } from './Icons';
+import { CameraIcon, PhotoIcon } from './Icons';
 
 interface HomeScreenProps {
   prescriptions: Prescription[];
-  onScanClick: () => void;
+  onCameraScanClick: () => void;
+  onLibraryScanClick: () => void;
 }
 
-export const HomeScreen: React.FC<HomeScreenProps> = ({ prescriptions, onScanClick }) => {
+export const HomeScreen: React.FC<HomeScreenProps> = ({ prescriptions, onCameraScanClick, onLibraryScanClick }) => {
   return (
     <div className="p-4 md:p-6 space-y-6">
       <header className="text-center">
@@ -19,9 +19,16 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ prescriptions, onScanCli
       
       <InventoryList prescriptions={prescriptions} />
 
-      <div className="fixed bottom-6 right-6">
+      <div className="fixed bottom-6 right-6 flex items-center space-x-3">
         <button
-          onClick={onScanClick}
+          onClick={onLibraryScanClick}
+          className="bg-white text-blue-600 border border-slate-300 rounded-full p-3 shadow-lg hover:bg-slate-100 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-transform transform hover:scale-105"
+          aria-label="写真ライブラリから選択"
+        >
+          <PhotoIcon className="w-7 h-7" />
+        </button>
+        <button
+          onClick={onCameraScanClick}
           className="bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-transform transform hover:scale-105"
           aria-label="処方箋をスキャンする"
         >

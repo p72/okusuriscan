@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { HomeScreen } from './components/HomeScreen';
 import { CorrectionScreen } from './components/CorrectionScreen';
@@ -28,10 +27,15 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fileInputRef = React.useRef<HTMLInputElement>(null);
+  const cameraInputRef = React.useRef<HTMLInputElement>(null);
+  const libraryInputRef = React.useRef<HTMLInputElement>(null);
 
-  const handleScanClick = () => {
-    fileInputRef.current?.click();
+  const handleCameraScanClick = () => {
+    cameraInputRef.current?.click();
+  };
+
+  const handleLibraryScanClick = () => {
+    libraryInputRef.current?.click();
   };
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -95,10 +99,10 @@ export default function App() {
         }
         // Fallback to home if data is missing
         setScreen('HOME');
-        return <HomeScreen prescriptions={prescriptions} onScanClick={handleScanClick} />;
+        return <HomeScreen prescriptions={prescriptions} onCameraScanClick={handleCameraScanClick} onLibraryScanClick={handleLibraryScanClick} />;
       case 'HOME':
       default:
-        return <HomeScreen prescriptions={prescriptions} onScanClick={handleScanClick} />;
+        return <HomeScreen prescriptions={prescriptions} onCameraScanClick={handleCameraScanClick} onLibraryScanClick={handleLibraryScanClick} />;
     }
   };
 
@@ -143,11 +147,18 @@ export default function App() {
 
       <input
         type="file"
-        ref={fileInputRef}
+        ref={cameraInputRef}
         onChange={handleFileChange}
         className="hidden"
         accept="image/*"
         capture="environment"
+      />
+      <input
+        type="file"
+        ref={libraryInputRef}
+        onChange={handleFileChange}
+        className="hidden"
+        accept="image/*"
       />
     </div>
   );
