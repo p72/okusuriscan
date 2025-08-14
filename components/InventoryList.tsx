@@ -1,3 +1,4 @@
+
 import React, { useMemo } from 'react';
 import { Prescription } from '../types';
 import { PillIcon, ClockIcon } from './Icons';
@@ -26,7 +27,8 @@ export const InventoryList: React.FC<InventoryListProps> = ({ prescriptions }) =
       .flatMap(p => 
         p.medications.map(m => ({
           ...m,
-          remainingDays: calculateRemainingDays(p.prescriptionDate, m.days)
+          remainingDays: calculateRemainingDays(p.prescriptionDate, m.days),
+          totalDays: m.days
         }))
       )
       .filter(m => m.remainingDays > 0)
@@ -47,19 +49,19 @@ export const InventoryList: React.FC<InventoryListProps> = ({ prescriptions }) =
     <div className="space-y-4">
       {activeMedications.map((med) => (
         <div key={med.id} className="bg-white p-4 rounded-lg shadow-md border-l-4 border-teal-500">
-          <div className="flex justify-between items-start">
-            <div>
+          <div className="flex justify-between items-start gap-4">
+            <div className="flex-grow">
               <h3 className="font-bold text-lg text-slate-800">{med.name}</h3>
-              <p className="text-sm text-slate-600">{med.dosage}</p>
+              <div className="mt-2 flex items-center text-sm text-slate-600">
+                <ClockIcon className="w-4 h-4 mr-2 text-slate-400 flex-shrink-0" />
+                <span>{med.usage}</span>
+              </div>
             </div>
-            <div className="text-right flex-shrink-0 ml-4">
+            <div className="text-right flex-shrink-0">
               <span className="font-bold text-xl text-teal-600">{med.remainingDays}</span>
               <span className="text-sm text-slate-500"> 日分</span>
+              <p className="text-xs text-slate-400 mt-1">({med.totalDays}日分)</p>
             </div>
-          </div>
-          <div className="mt-3 pt-3 border-t border-slate-200 flex items-center text-sm text-slate-500">
-            <ClockIcon className="w-4 h-4 mr-2 text-slate-400" />
-            <span>{med.usage}</span>
           </div>
         </div>
       ))}

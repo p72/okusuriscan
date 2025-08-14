@@ -30,20 +30,23 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({ prescriptions }) =
       <div className="space-y-6">
         {sortedPrescriptions.map(p => (
           <div key={p.id} className="bg-white p-5 rounded-lg shadow-md">
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-200">
+            <div className="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
               <div className="flex items-center gap-2">
                 <CalendarIcon className="w-5 h-5 text-blue-600" />
                 <span className="font-semibold text-slate-800 text-lg">処方日: {p.prescriptionDate}</span>
               </div>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-4">
               {p.medications.map(med => (
-                <div key={med.id} className="pl-4 border-l-2 border-slate-200">
-                  <div className="flex items-center gap-2">
-                     <PillIcon className="w-4 h-4 text-slate-500"/>
-                     <p className="font-semibold text-slate-700">{med.name} ({med.dosage})</p>
-                  </div>
-                  <p className="text-sm text-slate-500 ml-6">{med.usage} - {med.days}日分</p>
+                <div key={med.id}>
+                    <div className="flex items-start gap-3">
+                        <PillIcon className="w-4 h-4 text-teal-600 mt-1 flex-shrink-0"/>
+                        <div>
+                            <p className="font-semibold text-slate-800">{med.name}</p>
+                            <p className="text-sm text-slate-600 mt-1"><span className="font-medium text-slate-500">用法・用量:</span> {med.usage}</p>
+                            <p className="text-sm text-slate-600 mt-1"><span className="font-medium text-slate-500">処方日数:</span> {med.days}日分</p>
+                        </div>
+                    </div>
                 </div>
               ))}
             </div>

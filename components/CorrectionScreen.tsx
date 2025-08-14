@@ -83,19 +83,15 @@ export const CorrectionScreen: React.FC<CorrectionScreenProps> = ({ ocrResult, i
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="sm:col-span-2">
                         <label htmlFor={`medName-${index}`} className="block text-sm font-medium text-slate-600 mb-1">薬剤名</label>
-                        <input type="text" id={`medName-${index}`} value={med.name} onChange={e => handleMedicationChange(index, 'name', e.target.value)} className="w-full p-2 border border-slate-300 rounded-md focus:ring-1 focus:ring-blue-500" />
-                      </div>
-                      <div>
-                        <label htmlFor={`medDosage-${index}`} className="block text-sm font-medium text-slate-600 mb-1">用量</label>
-                        <input type="text" id={`medDosage-${index}`} value={med.dosage} onChange={e => handleMedicationChange(index, 'dosage', e.target.value)} className="w-full p-2 border border-slate-300 rounded-md focus:ring-1 focus:ring-blue-500" />
-                      </div>
-                       <div>
-                        <label htmlFor={`medDays-${index}`} className="block text-sm font-medium text-slate-600 mb-1">日数</label>
-                        <input type="number" id={`medDays-${index}`} value={med.days} onChange={e => handleMedicationChange(index, 'days', parseInt(e.target.value, 10) || 0)} className="w-full p-2 border border-slate-300 rounded-md focus:ring-1 focus:ring-blue-500" />
+                        <input type="text" id={`medName-${index}`} value={med.name} onChange={e => handleMedicationChange(index, 'name', e.target.value)} className="w-full p-2 border border-slate-300 rounded-md focus:ring-1 focus:ring-blue-500" placeholder="例: タケキャブ錠20mg" />
                       </div>
                       <div className="sm:col-span-2">
-                        <label htmlFor={`medUsage-${index}`} className="block text-sm font-medium text-slate-600 mb-1">用法</label>
-                        <input type="text" id={`medUsage-${index}`} value={med.usage} onChange={e => handleMedicationChange(index, 'usage', e.target.value)} className="w-full p-2 border border-slate-300 rounded-md focus:ring-1 focus:ring-blue-500" />
+                        <label htmlFor={`medUsage-${index}`} className="block text-sm font-medium text-slate-600 mb-1">用法・用量</label>
+                        <input type="text" id={`medUsage-${index}`} value={med.usage} onChange={e => handleMedicationChange(index, 'usage', e.target.value)} className="w-full p-2 border border-slate-300 rounded-md focus:ring-1 focus:ring-blue-500" placeholder="例: 1日3回毎食後 1日6錠" />
+                      </div>
+                      <div>
+                        <label htmlFor={`medDays-${index}`} className="block text-sm font-medium text-slate-600 mb-1">日数</label>
+                        <input type="number" id={`medDays-${index}`} value={med.days} onChange={e => handleMedicationChange(index, 'days', parseInt(e.target.value, 10) || 0)} className="w-full p-2 border border-slate-300 rounded-md focus:ring-1 focus:ring-blue-500" placeholder="例: 14" />
                       </div>
                     </div>
                   </div>

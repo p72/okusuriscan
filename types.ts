@@ -2,8 +2,7 @@
 export interface Medication {
   id: string;
   name: string;
-  dosage: string;
-  usage: string;
+  usage: string; // 例: "1日3回毎食後 1回1錠"
   days: number;
 }
 
