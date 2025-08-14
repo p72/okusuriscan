@@ -22,7 +22,7 @@ const prescriptionSchema = {
         type: Type.OBJECT,
         properties: {
           name: { type: Type.STRING, description: '薬剤名' },
-          dosage: { type: Type.STRING, description: '薬剤の容量 (例: 20mg, 1錠)' },
+          dosage: { type: Type.STRING, description: '薬剤の用量 (例: 20mg, 1錠)' },
           usage: { type: Type.STRING, description: '用法 (例: 1日3回毎食後)' },
           days: { type: Type.INTEGER, description: '処方日数 (例: 7)' }
         },
@@ -46,7 +46,7 @@ export const extractPrescriptionInfo = async (imageBase64: string): Promise<OcrR
 - 処方箋の発行日
 - 処方されている全ての薬剤について、以下の情報:
   - 薬剤名
-  - 容量 (例: 250mg)
+  - 用量 (例: 250mg)
   - 用法 (例: 1日3回 食後)
   - 日数 (例: 7日分)
 

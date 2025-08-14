@@ -86,7 +86,7 @@ export const CorrectionScreen: React.FC<CorrectionScreenProps> = ({ ocrResult, i
                         <input type="text" id={`medName-${index}`} value={med.name} onChange={e => handleMedicationChange(index, 'name', e.target.value)} className="w-full p-2 border border-slate-300 rounded-md focus:ring-1 focus:ring-blue-500" />
                       </div>
                       <div>
-                        <label htmlFor={`medDosage-${index}`} className="block text-sm font-medium text-slate-600 mb-1">容量</label>
+                        <label htmlFor={`medDosage-${index}`} className="block text-sm font-medium text-slate-600 mb-1">用量</label>
                         <input type="text" id={`medDosage-${index}`} value={med.dosage} onChange={e => handleMedicationChange(index, 'dosage', e.target.value)} className="w-full p-2 border border-slate-300 rounded-md focus:ring-1 focus:ring-blue-500" />
                       </div>
                        <div>
